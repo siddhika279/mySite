@@ -12,8 +12,9 @@ export class SearchComponent implements OnInit {
 
   }
   searchValue: string="";
-  changeSearchValue(eventData: any){
-    console.log(eventData);
+  changeSearchValue(eventData: Event){
+    console.log((<HTMLInputElement>eventData.target).value);
+    this.searchValue=(<HTMLInputElement>eventData.target).value;
   }
 
 }
