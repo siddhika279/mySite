@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
   slogan='Your one stop shop for everything';
-  source="assets/shop.jpg"
+  source="assets/shopStore.jpeg"
 }

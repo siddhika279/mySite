@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Replica</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ccc;
+        }
+        .logo img {
+            width: 100px;
+        }
+        .profile img {
+            width: 40px;
+            border-radius: 50%;
+        }
+        /* Content */
+        .content {
+            display: flex;
+            flex: 1;
+        }
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+            background-color: #f5f5f5;
+        }
+        .sidebar a {
+            display: block;
+            padding: 12px;
+            color: #333;
+            font-size: 16px;
+            text-decoration: none;
+            margin-bottom: 8px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            background-color: #d9e4f2;
+            color: #1a73e8;
+        }
+        /* Main Email List */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            overflow-y: auto;
+        }
+        /* Search Bar */
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            width: 60%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        /* Email List */
+        .email-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .email-list li {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .email-list li img {
+            margin-right: 15px;
+            width: 20px;
+        }
+        .email-list li:hover, .email-list li.selected {
+            background-color: #f9f9f9;
+        }
+        .email-time {
+            margin-left: auto;
+            color: #999;
+        }
+        /* Footer */
+        .footer {
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+            background-color: #f5f5f5;
+        }
+        .footer a {
+            margin: 0 10px;
+            color: #555;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r2.png" alt="Gmail Logo">
+        </div>
+        <div class="profile">
+            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Profile Picture">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#" class="active">Compose Mail</a>
+            <a href="#">Folders</a>
+            <a href="#">Inbox</a>
+            <a href="#">Starred</a>
+            <a href="#">Sent Mail</a>
+            <a href="#">Drafts (59)</a>
+            <a href="#">All Mail</a>
+            <a href="#">Spam (133)</a>
+            <a href="#">Trash</a>
+            <a href="#">Contacts</a>
+        </div>
+
+        <!-- Main Email Area -->
+        <div class="main-content">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" onkeyup="filterEmails()" placeholder="Search...">
+            </div>
+            <!-- Email List -->
+            <ul class="email-list" id="emailList">
+                <li onclick="selectEmail(this)">
+                    <img src="116-512.webp" alt="Email Icon">
+                    <b>You have an invitation - Hi Rahul</b>
+                    <span class="email-time">2:20 pm</span>
+                </li>
+                <li onclick="selectEmail(this)">
+                    <img src="116-512.webp" alt="Email Icon">
+                  <b>  Facebook friending Pooja Mittal recently sent you a friend request</b>
+                    <span class="email-time">2:16 pm</span>
+                </li>
+                <li onclick="selectEmail(this)">
+                    <img src="116-512.webp" alt="Email Icon">
+                    <b>You have an invitation - Hi Rahul</b>
+                    <span class="email-time">2:16 pm</span>
+                </li>
+                <li onclick="selectEmail(this)">
+                         <li onclick="selectEmail(this)">
+                        <img src="116-512.webp" alt="Email Icon">
+                      <b>  Facebook friending Pooja Mittal recently sent you a friend request</b>
+                        <span class="email-time">2:16 pm</span>
+                    </li>
+                    <li onclick="selectEmail(this)">
+                        <img src="116-512.webp" alt="Email Icon">
+                       <b> You have an invitation - Hi Rahul</b>
+                        <span class="email-time">2:20 pm</span>
+                    </li>
+                    <li onclick="selectEmail(this)">
+                        <img src="116-512.webp" alt="Email Icon">
+                        <b>You have an invitation - Hi Rahul</b>
+                        <span class="email-time">2:20 pm</span>
+                    </li>
+                    <li onclick="selectEmail(this)">
+                        <img src="116-512.webp" alt="Email Icon">
+                       <b> Facebook friending Pooja Mittal recently sent you a friend request</b>
+                        <span class="email-time">2:16 pm</span>
+                    </li>
+                    <li onclick="selectEmail(this)">
+                        <img src="116-512.webp" alt="Email Icon">
+                       <b> Facebook friending Pooja Mittal recently sent you a friend request</b>
+                        <span class="email-time">2:16 pm</span>
+                    </li>
+                    <li onclick="selectEmail(this)">
+                        <img src="116-512.webp" alt="Email Icon">
+                       <b> Facebook friending Pooja Mittal recently sent you a friend request</b>
+                        <span class="email-time">2:16 pm</span>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Gmail Blog</a>
+        <a href="#">Google Home</a>
+    </div>
+</div>
+
+<script>
+    // Function to filter emails in the list based on search input
+    function filterEmails() {
+        let input = document.getElementById('searchInput');
+        let filter = input.value.toLowerCase();
+        let emailList = document.getElementById('emailList');
+        let emails = emailList.getElementsByTagName('li');
+
+        for (let i = 0; i < emails.length; i++) {
+            let emailText = emails[i].textContent || emails[i].innerText;
+            if (emailText.toLowerCase().indexOf(filter) > -1) {
+                emails[i].style.display = "";
+            } else {
+                emails[i].style.display = "none";
+            }
+        }
+    }
+
+    // Function to handle email selection
+    function selectEmail(emailItem) {
+        // Remove "selected" class from previously selected email
+        let selected = document.querySelector(".email-list li.selected");
+        if (selected) {
+            selected.classList.remove("selected");
+        }
+
+        // Add "selected" class to the clicked email item
+        emailItem.classList.add("selected");
+    }
+</script>
+
+</body>
+</html>
