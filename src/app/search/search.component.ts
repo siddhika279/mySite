@@ -14,7 +14,6 @@ export class SearchComponent implements OnInit {
   searchValue: string="";
   changeSearchValue(eventData: any){
     console.log(eventData);
-
   }
 
 }
